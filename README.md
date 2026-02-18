@@ -49,3 +49,7 @@ If you want to build this archetype from source:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Credits
+
+This project was forked from [sosuisen/jfx-sss-fxml](https://github.com/sosuisen/jfx-sss-fxml).
