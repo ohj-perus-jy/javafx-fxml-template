@@ -2,41 +2,64 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>io.github.sosuisen</groupId>
-  <artifactId>jfx-sss-fxml</artifactId>
-  <version>1.1.3</version>
-  <description>JavaFX archetype for a non-modular FXML project. This archetype is designed for Java beginners. To keep things simple, it does not incorporate the Java module system.</description>
-  <url>https://github.com/sosuisen/</url>
+  <groupId>${groupId}</groupId>
+  <artifactId>${artifactId}</artifactId>
+  <version>${version}</version>
+  <name>${artifactId}</name>
+  <description>A JavaFX archetype for a non-modular FXML project.</description>
+  <url>https://github.com/user/javafx-fxml-template</url>
+
   <licenses>
-    <license/>
+    <license>
+      <name>MIT License</name>
+      <url>http://www.opensource.org/licenses/mit-license.php</url>
+    </license>
   </licenses>
 
   <developers>
-    <developer/>
+    <developer>
+      <name>Your Name</name>
+      <email>your.email@example.com</email>
+    </developer>
   </developers>
 
-  <scm/>
+  <scm>
+    <connection>scm:git:git://github.com/user/javafx-fxml-template.git</connection>
+    <developerConnection>scm:git:ssh://github.com:user/javafx-fxml-template.git</developerConnection>
+    <url>https://github.com/user/javafx-fxml-template/tree/main</url>
+  </scm>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <javafx.plugin.version>0.0.8</javafx.plugin.version>
-    <!-- Note: JavaFX 23 requires JDK 21 or Later -->
-    <javafx.version>23.0.2</javafx.version>
-    <maven.compiler.release>21</maven.compiler.release>
-    <main.class>com.sosuisha.Launcher</main.class>
+    <javaVersion>25</javaVersion>
+    <main.class>${package}.App</main.class>
+    <jpackage.type>APP_IMAGE</jpackage.type>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
-      <version>${javafx.version}</version>
+      <version>${javaVersion}</version>
     </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-fxml</artifactId>
-      <version>${javafx.version}</version>
+      <version>${javaVersion}</version>
     </dependency>
   </dependencies>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
 
   <build>
     <plugins>
@@ -45,7 +68,7 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.13.0</version>
         <configuration>
-          <release>${maven.compiler.release}</release>
+          <release>${javaVersion}</release>
         </configuration>
       </plugin>
       <plugin>
@@ -112,57 +135,49 @@
             <option>-Dfile.encoding=UTF-8</option>
           </javaOptions>
           <type>${jpackage.type}</type>
-          <!-- for debug -->
-          <!-- <winConsole>true</winConsole> -->
-          <!-- Options for MSI -->
-          <!--
-            <winDirChooser>true</winDirChooser>
-            <winMenu>true</winMenu>
-            <winShortcut>true</winShortcut>
-            <winShortcutPrompt>true</winShortcutPrompt>
-            -->
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>3.3.1</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.8.0</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>3.2.4</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
 
-  <profiles>
-    <profile>
-      <id>win</id>
-      <activation>
-        <os>
-          <family>windows</family>
-        </os>
-      </activation>
-      <properties>
-        <!-- APP_IMAGE or MSI-->
-        <!-- If you choose MSI, install WiX ver3 and set the path -->
-        <jpackage.type>APP_IMAGE</jpackage.type>
-      </properties>
-    </profile>
-    <profile>
-      <id>mac</id>
-      <activation>
-        <os>
-          <family>mac</family>
-        </os>
-      </activation>
-      <properties>
-        <!-- DMG or PKG -->
-        <jpackage.type>DMG</jpackage.type>
-      </properties>
-    </profile>
-    <profile>
-      <id>unix</id>
-      <activation>
-        <os>
-          <family>unix</family>
-        </os>
-      </activation>
-      <properties>
-        <!-- APP_IMAGE, RPM or DEB-->
-        <jpackage.type>APP_IMAGE</jpackage.type>
-      </properties>
-    </profile>
-  </profiles>
 </project>
