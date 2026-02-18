@@ -1,32 +1,51 @@
-# jfx-sss-fxml
+# JavaFX FXML Template Archetype
 
-This Maven Archetype is a JavaFX template for a non-modular FXML project.
-https://central.sonatype.com/artifact/io.github.sosuisen/jfx-sss-fxml
+A Maven archetype for creating a simple, non-modular JavaFX application with FXML.
 
-Designed for Java beginners, this archetype simplifies the development process by excluding the Java module system.
+Designed for beginners, this archetype simplifies the development process by excluding the Java module system.
 
-To use it, run `mvn archetype:generate` and search for **jfx-sss-fxml**.
+## Usage
 
+To generate a new project from this archetype, run:
 
-# Build this Maven archetype project
-
-You can build this archetype project and install it to your local Maven repository.
-
-```
-java -Dgpg=false MavenArchetypeRunner.java 
-cd project/target/generated-sources/archetype
-mvn install
+```bash
+mvn archetype:generate \
+  -DarchetypeGroupId=io.github.ohj-perus-jy \
+  -DarchetypeArtifactId=javafx-fxml-template \
+  -DarchetypeVersion=1.0.1
 ```
 
-## Generate a new project from the local archetype
-```
-mkdir /tmp/project
-cd /tmp/project
-mvn archetype:generate -DarchetypeCatalog=local
-```
+## Features
 
-## Run the project
-```
-cd /tmp/project/myapp
-mvn javafx:run
-```
+- **Non-modular**: No `module-info.java` required, making it easier for beginners.
+- **FXML Support**: Pre-configured with a simple FXML layout and controller.
+- **IDE Compatible**: Includes a `Main` class to avoid the "JavaFX runtime components are missing" error when running directly from an IDE (like IntelliJ IDEA).
+- **Packaging**: Includes configuration for `javafx-maven-plugin` and `jpackage-maven-plugin` to create executable bundles.
+
+## Running the Generated Project
+
+Once the project is generated, you can run it:
+
+1.  **Via Maven**:
+    ```bash
+    mvn javafx:run
+    ```
+2.  **Via IDE**:
+    Run the `main` method in the `Main` class.
+
+## Build and Install Locally
+
+If you want to build this archetype from source:
+
+1.  Install the archetype to your local repository:
+    ```bash
+    mvn install
+    ```
+2.  Generate a project using the local catalog:
+    ```bash
+    mvn archetype:generate -DarchetypeCatalog=local
+    ```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

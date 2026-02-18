@@ -5,12 +5,12 @@
 
     <groupId>io.github.ohj-perus-jy</groupId>
     <artifactId>javafx-fxml-template</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>maven-archetype</packaging>
 
     <name>JavaFX FXML Template</name>
     <description>A Maven archetype for creating a simple JavaFX application.</description>
-    <url>https://github.com/user/javafx-fxml-template</url>
+    <url>https://github.com/ohj-perus-jy/javafx-fxml-template</url>
 
     <licenses>
         <license>
@@ -27,9 +27,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/user/javafx-fxml-template.git</connection>
-        <developerConnection>scm:git:ssh://github.com:user/javafx-fxml-template.git</developerConnection>
-        <url>https://github.com/user/javafx-fxml-template/tree/main</url>
+        <connection>scm:git:git://github.com/ohj-perus-jy/javafx-fxml-template.git</connection>
+        <developerConnection>scm:git:ssh://github.com:ohj-perus-jy/javafx-fxml-template.git</developerConnection>
+        <url>https://github.com/ohj-perus-jy/javafx-fxml-template/tree/main</url>
     </scm>
 
     <build>

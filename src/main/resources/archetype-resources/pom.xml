@@ -33,7 +33,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <javafx.plugin.version>0.0.8</javafx.plugin.version>
     <javaVersion>25</javaVersion>
-    <main.class>${package}.App</main.class>
+    <main.class>${package}.Main</main.class>
     <jpackage.type>APP_IMAGE</jpackage.type>
   </properties>
 

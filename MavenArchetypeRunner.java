@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class MavenArchetypeRunner {
-    static final String GITHUB_ACCOUNT = "sosuisen";
+    static final String GITHUB_ACCOUNT = "ohj-perus-jy";
     static final String LICENSES = """
             <licenses>
               <license>
@@ -202,8 +202,8 @@ public class MavenArchetypeRunner {
                         "<javafx.version>\\${javaFxVersion}</javafx.version>");
                 content = content.replaceAll("<maven\\.compiler\\.release>.+</maven\\.compiler\\.release>",
                         "<maven.compiler.release>\\${javaVersion}</maven.compiler.release>");
-                content = content.replaceAll("<main\\.class>.+\\.Launcher</main\\.class>",
-                        "<main.class>\\${package}.Launcher</main.class>");
+                content = content.replaceAll("<main\\.class>.+\\.Main</main\\.class>",
+                        "<main.class>\\${package}.Main</main.class>");
                 content = content.replaceAll("(?s)\s+?<url>.+?</url>\r\n", "");
                 content = content.replaceAll("(?s)\s+?<licenses>.+?</licenses>\r\n", "");
                 content = content.replaceAll("(?s)\s+?<developers>.+?</developers>\r\n", "");
